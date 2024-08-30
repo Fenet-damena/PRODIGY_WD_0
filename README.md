@@ -26,11 +26,11 @@ Open index.html
 
 Open index.html in your preferred web browser to start playing the game.
 
-Project Structure
+# Project Structure
 index.html: Contains the structure of the game pages.
 style.css: Styles for the game pages and elements.
 script.js: JavaScript code to handle game logic and interactions.
-How to Play
+# How to Play
 Start Game: Click the "Start Game" button on the welcome page.
 Choose Game Mode: Select whether to play with a friend or against AI.
 Play the Game:
@@ -40,20 +40,15 @@ If you are playing against AI, the AI will make a move after a short delay.
 End of Game:
 The game will indicate if a player wins or if it's a draw.
 You can restart the game or go back to the welcome page using the provided buttons.
-Code Explanation
+# Code Explanation
 HTML: Defines the structure and layout of the game pages.
 CSS: Provides styling and animations for a better user experience.
 JavaScript: Manages game logic, page transitions, and user interactions.
-Customization
+# Customization
 You can customize the game by modifying the CSS for different styles or by adjusting the JavaScript to change game logic or add new features.
 
-Contributing
+# Contributing
 Feel free to contribute to this project by opening issues or submitting pull requests.
-
-Acknowledgments
-Thanks to Google Fonts for the fonts used in the project.
-Inspired by classic Tic Tac Toe gameplay.
-Enjoy playing Tic Tac Toe!
 
 
 
