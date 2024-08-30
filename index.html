@@ -8,21 +8,44 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="welcome-page" class="page">
-        <div class="content">
-          <h1>Welcome to Tic Tac Toe!</h1>
-          <button id="start-game-btn" class="green-btn">Start Game</button>
-        </div>
+  <div id="wp" class="box">
+    <div class="ct">
+      <h1>Welcome to Tic Tac Toe!</h1>
+      <button id="sg" class="gb">Start Game</button>
+    </div>
+  </div>
+
+  <div id="mp" class="box hd">
+    <div class="ct">
+      <h1>Choose Game Mode</h1>
+      <div class="bt">
+        <button id="pwf" class="gb">Play with Friend</button>
+        <button id="pwa" class="gb">Play with AI</button>
       </div>
-    
-      <div id="menu-page" class="page hidden">
-        <div class="content">
-          <h1>Choose Game Mode</h1>
-          <div class="buttons">
-            <button id="play-with-friend-btn" class="green-btn">Play with Friend</button>
-            <button id="play-with-ai-btn" class="green-btn">Play with AI</button>
-          </div>
-        </div>
+    </div>
+  </div>
+
+  <div id="gp" class="box hd">
+    <div class="ct">
+      <div class="bd">
+        <div class="cl"></div>
+        <div class="cl"></div>
+        <div class="cl"></div>
+        <div class="cl"></div>
+        <div class="cl"></div>
+        <div class="cl"></div>
+        <div class="cl"></div>
+        <div class="cl"></div>
+        <div class="cl"></div>
       </div>
+      <div class="cs">
+        <button id="bk" class="gb">Back</button>
+        <button id="rt" class="gb">Restart</button>
+      </div>
+      <div id="ti">Current Player: X</div>
+      <div id="msg"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

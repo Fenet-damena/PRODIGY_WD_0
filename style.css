@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -7,9 +8,10 @@ body {
   background-size: 200% 200%; 
   animation: gradientAnimation 15s ease infinite; 
   color: #333;
-  overflow: hidden;
+  overflow: hidden; 
 }
-.page {
+
+.box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,8 +26,129 @@ body {
   transition: opacity 0.3s ease-in-out;
   z-index: 1; 
 }
+
+.box.hd {
+  opacity: 0;
+  pointer-events: none;
+}
+
 @keyframes gradientAnimation {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
-  }
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.ct {
+  text-align: center;
+  padding: 2rem;
+  background-color: #c2d8d7;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  border: none solid #007bff;
+  z-index: 2; 
+}
+
+#wp .ct {
+  max-width: 400px;
+}
+
+#wp h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 3rem;
+  color: #007bff; 
+  margin-bottom: 2rem;
+}
+
+#mp .ct {
+  max-width: 400px;
+}
+
+#mp h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2.5rem;
+  color: #1e90ff; 
+  margin-bottom: 2rem;
+}
+
+.bt {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#gp .ct {
+  max-width: 600px;
+}
+
+.bd {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  width: 320px;
+  margin: 0 auto;
+}
+
+.cl {
+  width: 100%;
+  height: 100px;
+  background-color: #ffffff;
+  border: 3px solid #007bff; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  border-radius: 8px;
+}
+
+.cl:active {
+  transform: scale(0.95);
+  background-color: #f0f8ff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cl.occupied {
+  pointer-events: none;
+}
+
+.cs {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cs button {
+  margin: 0 1rem;
+}
+
+.gb {
+  background-color: #28a745;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.gb:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+#ti {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff; 
+}
+
+#msg {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #dc3545; 
+}
