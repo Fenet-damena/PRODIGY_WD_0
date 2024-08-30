@@ -12,108 +12,102 @@ document.addEventListener('DOMContentLoaded', () => {
     const msg = document.getElementById('msg');
     let gm = '';
     let cp = 'X';
-    function sp(pg) {
-      const ps = document.querySelectorAll('.box');
-      ps.forEach(p => {
-        if (p === pg) {
-          p.classList.remove('hd');
-        } else {
-          p.classList.add('hd');
-        }
-      });
+    function showPage(pageToShow) {
+     const pages = document.querySelectorAll('.box');
+        pages.forEach(page => {
+            if (page === pageToShow) {
+                page.classList.remove('hd');
+            } else {
+                page.classList.add('hd');
+            }
+        });
     }
-  function rg() {
-      cl.forEach(c => {
-        c.textContent = '';
-        c.classList.remove('occupied');
-      });
-      cp = 'X';
-      ti.textContent = 'Current Player: X';
-      msg.textContent = '';
-    }
-   function cw() {
-      const wc = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-      ];
-  
-      for (const c of wc) {
-        const [a, b, d] = c;
-        if (cl[a].textContent && cl[a].textContent === cl[b].textContent && cl[a].textContent === cl[d].textContent) {
-          msg.textContent = `${cl[a].textContent} wins!`;
-          return true;
-        }
-      }
-  
-      if ([...cl].every(c => c.textContent)) {
-        msg.textContent = 'The game ends in a draw!';
-        return true;
-      }
-  
-      return false;
-    }
-   function hc(e) {
-      const c = e.target;
-  
-      if (c.classList.contains('occupied') || msg.textContent) return;
-  
-      c.textContent = cp;
-      c.classList.add('occupied');
-  
-      if (cw()) return;
-  
-      cp = cp === 'X' ? 'O' : 'X';
-      ti.textContent = `Current Player: ${cp}`;
-  
-      if (gm === 'ai' && cp === 'O') {
-        setTimeout(am, 500);
-      }
-    }
-   function am() {
-      const ec = [...cl].filter(c => !c.classList.contains('occupied'));
-      if (ec.length === 0) return;
-  
-      const rc = ec[Math.floor(Math.random() * ec.length)];
-      rc.textContent = 'O';
-      rc.classList.add('occupied');
-  
-      if (!cw()) {
+function resetGame() {
+        cl.forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('oc');
+        });
         cp = 'X';
         ti.textContent = 'Current Player: X';
-      }
+        msg.textContent = '';
+        ti.style.display = 'block';
     }
-  
+    function checkWin() {
+        const winningCombos = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+        for (const combo of winningCombos) {
+            const [a, b, c] = combo;
+            if (cl[a].textContent && cl[a].textContent === cl[b].textContent && cl[a].textContent === cl[c].textContent) {
+                msg.textContent = `${cl[a].textContent} wins!`;
+                ti.style.display = 'none';
+                return true;
+            }
+        }
+  if ([...cl].every(cell => cell.textContent)) {
+            msg.textContent = 'The game ends in a draw!';
+            ti.style.display = 'none';
+            return true;
+        }
+
+        return false;
+    }
+   function handleCellClick(event) {
+        const cell = event.target;
+
+        if (cell.classList.contains('oc') || msg.textContent) return;
+
+        cell.textContent = cp;
+        cell.classList.add('oc');
+
+        if (checkWin()) return;
+
+        cp = cp === 'X' ? 'O' : 'X';
+        ti.textContent = `Current Player: ${cp}`;
+
+        if (gm === 'ai' && cp === 'O') {
+            setTimeout(aiMove, 500);
+        }
+    }
+  function aiMove() {
+        const emptyCells = [...cl].filter(cell => !cell.classList.contains('oc'));
+        if (emptyCells.length === 0) return;
+
+        const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        randomCell.textContent = 'O';
+        randomCell.classList.add('oc');
+
+        if (!checkWin()) {
+            cp = 'X';
+            ti.textContent = 'Current Player: X';
+        }
+    }
     sg.addEventListener('click', () => {
-      sp(mp);
+        showPage(mp);
     });
-  
     pwf.addEventListener('click', () => {
-      gm = 'friend';
-      rg();
-      sp(gp);
+        gm = 'friend';
+        resetGame();
+        showPage(gp);
     });
-  
     pwa.addEventListener('click', () => {
-      gm = 'ai';
-      rg();
-      sp(gp);
+        gm = 'ai';
+        resetGame();
+        showPage(gp);
     });
-  
     bk.addEventListener('click', () => {
-      sp(wp);
+        showPage(wp);
     });
-  
-    rt.addEventListener('click', () => {
-      rg();
+ rt.addEventListener('click', () => {
+        resetGame();
     });
-  
-    cl.forEach(c => c.addEventListener('click', hc));
-  
-    sp(wp);
+    cl.forEach(cell => cell.addEventListener('click', handleCellClick));
+    showPage(wp);
 });
